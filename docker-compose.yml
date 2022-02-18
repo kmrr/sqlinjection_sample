@@ -1,0 +1,31 @@
+version: '3'
+services:
+  app:
+    container_name: php
+    build:
+      context: ./php
+      dockerfile: Dockerfile
+    tty: true
+    volumes:
+      - ./html:/var/www/html
+    ports:
+      - "80:80"
+    networks:
+      - sample-network
+
+  db1:
+    container_name: mysql
+    build:
+      context: ./mysql
+      dockerfile: Dockerfile
+    environment:
+      - MYSQL_ROOT_PASSWORD=pass
+    volumes:
+      - ./mysql/initdb.d:/docker-entrypoint-initdb.d 
+      - ./mysql/db:/var/lib/mysql 
+    networks:
+      - sample-network
+    command: --default-authentication-plugin=mysql_native_password
+
+networks:
+  sample-network:
