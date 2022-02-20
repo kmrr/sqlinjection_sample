@@ -14,5 +14,6 @@
         <button javascript:onclick="submit();">login</button>
     </form>
     <a href="./new.php">新規登録はこちら</a>
+    <a href="./resetDB.php">DBリセットはこちら</a>
 </body>
 </html>

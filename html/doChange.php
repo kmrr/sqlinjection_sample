@@ -25,11 +25,12 @@
     }
 
     ## テーブル更新処理
-    $sql = "UPDATE test SET password='".$newPassword."' where name='".$name."'";
+    $sql = "UPDATE test SET password=? where name='".$name."'";
     $stmt = $db->prepare($sql);
     try{
-        $flag = $stmt->execute();
-    }catch(Exception $e){
+        $stmt->execute(array($newPassword));
+        $rowCount = $stmt->rowCount();
+    }catch(PDOException $e){
         echo $e->getMessage();
         exit;
     }
@@ -44,7 +45,7 @@
 </head>
 <body>
     <?php
-    if($flag){
+    if($rowCount){
         echo "<h2>登録完了しました。</h2>";
     }else{
         echo "<h2>登録に失敗しました。</h2>";

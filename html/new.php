@@ -7,7 +7,7 @@
 </head>
 <body>
     <form action="./doRegist.php" name="form1" method="POST">
-        <span>ユーザID：<input type="text" name="name"></span><br>
+        <span>ユーザ名：<input type="text" name="name"></span><br>
         <span>パスワード：<input type="text" name="password"></span>
         <hr>
         <button javascript:onclick="submit();">create</button>
