@@ -5,6 +5,21 @@
     $dsn = "mysql:host=mysql;dbname=sample;";
     $db = new PDO($dsn, 'root', 'pass');
 
+    ##テーブル存在確認
+    $sql = "SELECT COUNT(*) FROM test WHERE name=?"; 
+    $stmt = $db->prepare($sql);
+    try{
+        $stmt->execute(array($name));
+    }catch(PDOException $e){
+        echo $e->getMessage();
+        exit;
+    }
+    $count = $stmt->fetch(PDO::FETCH_ASSOC);
+    if($count>0){
+        echo "<h1>ユーザ名が重複しています。登録しなおしてください。</h1>";
+        exit;
+    }
+
     ## テーブル更新処理
     $sql = "INSERT INTO test(name, password) VALUES(?, ?)"; 
     $stmt = $db->prepare($sql);
