@@ -1,3 +1,3 @@
 <?php 
-header("Location: http://localhost/index.php");
+header("Location: http://localhost/SecondSqlInjection/index.php");
 ?>

@@ -73,5 +73,5 @@
         exit;
     }
 
-    header('Location: http://localhost/SqlInjection/index.php');
+    header('Location: http://localhost/SecondSqlInjection/index.php');
 ?>

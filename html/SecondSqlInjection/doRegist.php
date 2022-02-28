@@ -6,13 +6,13 @@
     $db = new PDO($dsn, 'root', 'pass');
 
     ##テーブル存在確認
-    $sql = "SELECT COUNT(*) FROM test WHERE name=?"; 
+    $sql = "SELECT 1 FROM test WHERE name=?"; 
     $stmt = $db->prepare($sql);
     try{
         $stmt->execute(array($name));
     }catch(PDOException $e){
         echo $e->getMessage();
-        exit;
+        exit;   
     }
     $count = $stmt->fetch(PDO::FETCH_ASSOC);
     if($count>0){
